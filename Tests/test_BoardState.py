@@ -1,3 +1,5 @@
+# Copyright (C) 2019 "Daniel Bramblett" <daniel.r.bramblett@gmail.com>
+
 from unittest import TestCase
 from board_state import BoardState
 import numpy as np
@@ -47,3 +49,16 @@ class TestConstructor(TestBoardStates):
         self.assertEqual(self.larger_board.row_size, 9)
         self.assertEqual(self.set_board.row_size, 4)
 
+    def test_greater_then(self):
+        self.assertTrue(
+            self.larger_board > self.perfect_board > self.set_board > self.smaller_board > self.imperfect_board)
+        self.assertFalse(self.perfect_board > self.larger_board)
+
+    def test_less_then(self):
+        self.assertTrue(
+            self.imperfect_board < self.smaller_board < self.set_board < self.perfect_board < self.larger_board)
+        self.assertFalse(self.larger_board < self.perfect_board)
+
+    def test_equality(self):
+        self.assertTrue(self.imperfect_board == self.imperfect_board)
+        self.assertFalse(self.imperfect_board == self.larger_board)

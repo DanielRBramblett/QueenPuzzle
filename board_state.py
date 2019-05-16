@@ -28,7 +28,7 @@ class BoardState:
     # score is calculated with the fitness function.
     def __init__(self, new_state=None, number_of_rows=8):
         if new_state is not None:
-            if isinstance(new_state,np.ndarray):
+            if isinstance(new_state, np.ndarray):
                 self.state = new_state
             else:
                 self.state = np.array(new_state)
@@ -50,3 +50,24 @@ class BoardState:
                 else:
                     temp += '0'
             print(temp)
+
+    # Allows instances of BoardState to be compared by fitness scores using the greater-then operator.
+    def __gt__(self, other):
+        if not isinstance(other, BoardState):
+            raise Exception("BoardState can't be compared to a non-BoardState.")
+        else:
+            return self.fitness_value.__gt__(other.fitness_value)
+
+    # Allows instances of BoardState to be compared by fitness scores using the less-then operator.
+    def __lt__(self, other):
+        if not isinstance(other, BoardState):
+            raise Exception("BoardState can't be compared to a non-BoardState.")
+        else:
+            return self.fitness_value.__lt__(other.fitness_value)
+
+    # Allows instances of BoardState to be compared by fitness scores using the equality operator.
+    def __eq__(self, other):
+        if not isinstance(other, BoardState):
+            raise Exception("BoardState can't be compared to a non-BoardState.")
+        else:
+            return self.fitness_value.__eq__(other.fitness_value)
