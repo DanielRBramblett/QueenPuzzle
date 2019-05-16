@@ -27,12 +27,16 @@ class BoardState:
     # on each row) and the number of rows. If no state is provided, a random one is generated. For both, the fitness
     # score is calculated with the fitness function.
     def __init__(self, new_state=None, number_of_rows=8):
-        self.row_size = number_of_rows
         if new_state is not None:
-            self.state = new_state
+            if isinstance(new_state,np.ndarray):
+                self.state = new_state
+            else:
+                self.state = np.array(new_state)
+            self.row_size = len(self.state)
         else:
             self.state = np.arange(number_of_rows)
             np.random.shuffle(self.state)
+            self.row_size = number_of_rows
 
         self.__fitness_calculate__()
 
