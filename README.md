@@ -18,7 +18,7 @@ The GeneticAlgorithm class be instantiated using a constructor that uses default
 <code>generation_statistics()</code> -Returns the average fitness score and maximum fitness score of the current generation as a tuple.
 <code>top_member()</code> -Returns a reference to the board state with the highest fitness score. Ties are broken at random.
 
-## Further Detail About Algorithm
+## Further Details About Algorithm
 ### Fitness Function
 The fitness function used to score each member calculated the number of edges between queens that isn't along diagonals, rows, or columns of the board. This means the maximum fitness for a given N-Queens Problem would be (-n + n^2)/2.
 
